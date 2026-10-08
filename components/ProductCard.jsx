@@ -29,7 +29,7 @@ export default function ProductCard({ product }) {
   const changeIcon = isUp ? "▲" : isDown ? "▼" : "—";
 
   return (
-    <Link href={`/product/${product.slug}`}>
+    <Link href={`/product/${product.id}`}>
       <article className="rounded-2xl border border-gray-200 bg-white p-4 transition duration-200  hover:border-green-300  sm:p-5">
         <div className="flex items-center gap-3">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-green-50 text-3xl sm:h-16 sm:w-16 sm:text-4xl">
