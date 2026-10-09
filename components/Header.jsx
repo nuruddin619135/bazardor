@@ -12,7 +12,6 @@ export default function Header() {
   const mobileToday = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "short",
   });
-
   return (
     <div className="max-w-7xl mx-auto px-2 2xl:px-0">
       <div className="flex items-center justify-between gap-3 py-3 ">

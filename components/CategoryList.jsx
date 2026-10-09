@@ -11,7 +11,7 @@ function CategoryList() {
   useEffect(() => {
     async function getCategories() {
       const response = await fetch(
-        "https://api.api-store.workers.dev/api/bazardor/categories",
+        `https://api.abcz.workers.dev/api/bazardor/categories`,
       );
 
       const data = await response.json();
@@ -26,7 +26,7 @@ function CategoryList() {
       <div className="flex flex-nowrap items-center gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
         {categories.map((category) => (
           <Link
-            href={`/category/${category.slug}`}
+            href={`/category/${category.id}`}
             key={category.id}
             className={`shrink-0 text-sm transition sm:text-base ${
               pathname === `/category/${category.slug}`

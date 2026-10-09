@@ -6,7 +6,7 @@ function Hero() {
     dateStyle: "full",
   });
   return (
-    <section className="overflow-hidden rounded-2xl bg-green-50">
+    <section className="overflow-hidden rounded-2xl bg-green-50 max-w-7xl mx-auto">
       <div className="flex flex-col items-center gap-6 px-5 py-8 sm:px-8 sm:py-10 md:flex-row md:justify-between md:py-12 lg:px-12">
         <div className="w-full md:w-1/2">
           <p className="mb-2 bg-green-200 inline-block p-1 rounded-full text-sm font-medium text-green-600 sm:text-base ">
