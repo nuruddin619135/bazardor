@@ -4,8 +4,10 @@ import logo from "@/assets/logo-icon.png";
 import Link from "next/link";
 import CategoryList from "./CategoryList";
 import PriceTicker from "./PriceTicker";
+import { authClient } from "@/lib/authClient";
 
 export default function Header() {
+  const user = authClient.useSession();
   const today = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
@@ -37,21 +39,36 @@ export default function Header() {
           </div>
         </div>
 
-        <nav className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-          <Link
-            href="/sign-in"
-            className="rounded-xl px-2 py-1 text-xs transition hover:bg-gray-100 sm:px-3 sm:text-base"
-          >
-            সাইন ইন
+        {user.data ? (
+          <Link href="/profile">
+            <div className="flex items-center gap-2">
+              <img
+                src={user.data.user.image}
+                alt="Profile"
+                className="h-8 w-8 rounded-full"
+              />
+              <p className="text-sm font-medium text-gray-700">
+                {user.data.user.name}
+              </p>
+            </div>
           </Link>
+        ) : (
+          <nav className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <Link
+              href="/sign-in"
+              className="rounded-xl px-2 py-1 text-xs transition hover:bg-gray-100 sm:px-3 sm:text-base"
+            >
+              সাইন ইন
+            </Link>
 
-          <Link
-            href="/sign-up"
-            className="rounded-xl bg-green-400 px-2 py-1 text-xs text-white transition hover:bg-green-500 sm:px-3 sm:text-base"
-          >
-            সাইন আপ
-          </Link>
-        </nav>
+            <Link
+              href="/sign-up"
+              className="rounded-xl bg-green-400 px-2 py-1 text-xs text-white transition hover:bg-green-500 sm:px-3 sm:text-base"
+            >
+              সাইন আপ
+            </Link>
+          </nav>
+        )}
       </div>
       <CategoryList />
       <PriceTicker />
